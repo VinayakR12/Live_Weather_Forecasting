@@ -1,3 +1,6 @@
 JS/config.js
-serviceAccountKey.json (Sensitive 🔥)
-.firebase/hosting..cache (
+serviceAccountKey.json
+.firebase/hosting..cache 
+firebase-debug.log
+.firebase
+.firebaserc
