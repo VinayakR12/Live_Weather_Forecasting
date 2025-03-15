@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🌦️ Weather Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="CSS/Compare.css">
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+    import { firebaseConfig } from "./JS/config.js";
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+</head>
+<body>
+
+ <nav class="bg-black  text-white p-2 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="Home.html" class="text-xl font-bold"><span class="text-4xl">🌦️</span> Live Weather Dashboard</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="Home.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Dashboard</a></li>
+                <li><a href="Compare.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Weather Analysis</a></li>
+                <li><a href="Forecast.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Weather Insights</a></li>
+            </ul>
+            <div class="text-sm hidden md:block">
+                <p id="currentDate"></p>
+                <p id="currentTime"></p>
+            </div>
+
+            <button id="menuButton" class="md:hidden text-white focus:outline-none">
+                ☰
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-black text-white p-4">
+            <ul class="space-y-2">
+                <li><a href="Home.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Dashboard</a></li>
+                <li><a href="Compare.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Weather Analysis</a></li>
+                <li><a href="Forecast.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Weather Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container p-6">
+        <h2 class="text-3xl font-bold mb-3" id="title">
+            <span class="text-4xl">🌦️</span> Weather Forecast Comparison
+        </h2>
+        <div class="mb-3">
+            <label for="parameter" class="form-label"><i class="fa-solid fa-chart-line"></i> Select Parameter:</label>
+            <select id="parameter" class="form-select w-75 mx-auto">
+                <option value="temp">Temperature (°C)</option>
+                <option value="humidity">Humidity (%)</option>
+                <option value="wind.speed">Wind Speed (m/s)</option>
+                <option value="pressure">Pressure (hPa)</option>
+<!--                <option value="visibility">Visibility (m)</option>-->
+            </select>
+        </div>
+
+        <div class="city-container" id="city-container"></div>
+
+        <button class="btn btn-primary mx-2" onclick="addCity()">
+            <i class="fa-solid fa-plus"></i> Add City
+        </button>
+        <button class="btn btn-danger mx-2" id="remove-btn" onclick="removeLastCity()" style="display: none;">
+            <i class="fa-solid fa-trash"></i> Remove
+        </button>
+
+        <br><br>
+        <button class="btn btn-success" onclick="fetchComparison()">
+            <i class="fa-solid fa-chart-area"></i> Compare
+        </button>
+
+        <div class="graph-title mt-4 p-2 bg-warning text-dark rounded shadow-sm" id="graphTitle">Weather Data</div>
+        <br>
+        <div class="chart-container">
+            <div class="loader" id="loader"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</div>
+            <canvas id="comparisonChart"></canvas>
+        </div>
+    </div>
+
+ <footer class="bg-black text-white text-center py-3 text-sm">
+    © 2025 Live Weather Dashboard
+</footer>
+<script src="JS/Compare.js"> </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+                  background: linear-gradient(135deg, #4facfe, #00f2fe);
+        font-family: 'Arial', sans-serif;
+            color: white;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+      .chart-container {
+    width: 100%;
+    max-width: 750px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    margin: auto;
+    position: relative;
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .chart-container {
+        max-width: 90%; /* Reduce width slightly for better fit */
+        height: 290px; /* Reduce height for tablets */
+        padding: 15px; /* Adjust padding */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .chart-container {
+        max-width: 95%;
+        height: 200px;
+        padding: 10px;
+        border-radius: 8px;
+
+    }
+}
+#title {
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    font-size:34px;
+    font-weight:bold;
+}
+
+
+        select {
+            display: block; /* Makes it a block element */
+            margin: 0 auto; /* Centers it horizontally */
+            text-align: center; /* Centers text inside dropdown (for some browsers) */
+            min-width: 80%; /* Adjust width if needed */
+            padding: 10px;
+            font-size: 16px;
+            font-weight:bold;
+
+        }
+
+
+        option {
+            text-align: center; /* Center align the dropdown text */
+        }
+
+.custom-select-width {
+    width: 350px; /* Adjust width as needed */
+    max-width: 100%; /* Ensures responsiveness */
+    padding: 10px; /* Increases padding for a better look */
+    font-size: 16px;
+
+    border-radius: 8px; /* Smooth rounded corners */
+    border: 2px solid;
+    color: blue; /* Text color */
+    text-align: center; /* Centers text inside the select field */
+    outline: none; /* Removes focus outline */
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+/* Hover Effect */
+.custom-select-width:hover {
+    border-color: blue;
+    background: linear-gradient(to right, #b2ebf2, #80deea); /* Slightly darker gradient */
+}
+
+
+/* Center align the select dropdown */
+.select-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    margin-top: 10px; /* Adjust spacing */
+}
+
+        select:hover {
+            background-color: #e0f0ff; /* Lighter shade on hover */
+            border-color: #0056b3; /* Darker blue border */
+        }
+
+        .loader {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: black;
+        }
+
+        .graph-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, orange,yellow);
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 14px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    width: fit-content;
+    margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.graph-title:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .graph-title {
+        font-size: 22px;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .graph-title {
+        font-size: 18px;
+        padding: 10px 16px;
+        border-radius: 10px;
+    }
+}

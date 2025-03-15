@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌦️ Weather Analysis Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+<link rel="stylesheet" href="CSS/Forecast.css">
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+    import { firebaseConfig } from "./JS/config.js";
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+</head>
+<body>
+
+
+    <nav class="bg-black text-white p-2 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Brand -->
+            <a href="Home.html" class="text-xl font-bold"><span class="text-4xl">🌦️</span> Live Weather Dashboard</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="Home.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Dashboard</a></li>
+                <li><a href="Compare.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Weather Analysis</a></li>
+                <li><a href="Forecast.html" class="px-7 py-2.5 hover:bg-blue-500 rounded transition">Weather Insights</a></li>
+            </ul>
+            <div class="text-sm hidden md:block">
+                <p id="currentDate"></p>
+                <p id="currentTime"></p>
+            </div>
+
+            <button id="menuButton" class="md:hidden text-white focus:outline-none">
+                ☰
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-black text-white p-4">
+            <ul class="space-y-2">
+                <li><a href="Home.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Dashboard</a></li>
+                <li><a href="Compare.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Weather Analysis</a></li>
+                <li><a href="Forecast.html" class="block px-4 py-2 hover:bg-blue-500 rounded">Weather Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="title" > ⛈️ Weather Forecast: Analysis & Trends</h1>
+    <p class="p1">Select a city to view real-time weather trends.</p>
+
+    <select title="City" id="citySelect" class="select1">
+        <option value="Kolhapur">Kolhapur</option>
+        <option value="Pune">Pune</option>
+        <option value="Sangli">Sangli</option>
+        <option value="Satara">Satara</option>
+        <option value="Mumbai">Mumbai</option>
+    </select>
+    <button onclick="fetchWeatherData()" class="button1">Get Weather</button>
+
+    <div id="error-message"></div>
+
+    <div class="container">
+        <div class="charts">
+            <div class="chart-container"><canvas id="weeklyTempChart"></canvas></div>
+            <div class="chart-container"><canvas id="humidityChart"></canvas></div>
+            <div class="chart-container"><canvas id="windSpeedChart"></canvas></div>
+            <div class="chart-container"><canvas id="pressureChart"></canvas></div>
+            <div class="chart-container"><canvas id="weatherPieChart"></canvas></div>
+        </div>
+    </div>
+<footer class="bg-black text-white text-center py-3 text-sm">
+    © 2025 Live Weather Dashboard
+</footer>
+<script src="JS/Forecast.js"></script>
+</body>
+</html>
